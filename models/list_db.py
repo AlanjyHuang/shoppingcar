@@ -5,8 +5,12 @@ import codecs, sys
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 import cgi
 from dbconfig import conn, cur
-search="SELECT * FROM storage"
-cur.execute(search)
-records = cur.fetchall()
-for (ID, Name, Price, Number) in records:
-	print(f"{ID} {Name} {Price} {Number}")
+def list_db(dbchoose="storage"):
+	search="SELECT * FROM "
+	search+=dbchoose
+	cur.execute(search)
+	records = cur.fetchall()
+	for (ID, Name, Price, Number) in records:
+		print(f"{ID} {Name} {Price} {Number}")
+if __name__=='__main__':
+	list_db()
