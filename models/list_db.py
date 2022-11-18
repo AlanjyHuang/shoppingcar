@@ -4,10 +4,31 @@
 import codecs, sys 
 import os
 import cgi
+sys.path.append('..')
 from models.dbconfig import conn, cur
-#sys.path.insert(0,os.getcwd())
-#sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 
+#sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
+#SELECT * FROM customers WHERE Name = '王二'
+def search_db(Name,num):
+	#print("in search")
+	search="SELECT * FROM "
+	search+="storage"
+	search+=" WHERE Name = '"
+	search+=Name
+	search+="'"
+	#print(search)
+	cur.execute(search)
+	records = cur.fetchall()
+	for (ID, Name, Price, Number) in records:
+		#print(f"{ID} {Name} {Price} {Number}")
+		temp={
+			"ID":ID,
+			"Name":Name,
+			"Price":Price,
+			"Number":Number
+		}
+		temp["Number"]=num
+	return temp
 def list_db(dbchoose="storage"):
 	#print("listdb OK")
 	ret_data=[]
@@ -26,4 +47,4 @@ def list_db(dbchoose="storage"):
 		ret_data.append(temp)
 	return ret_data
 if __name__=='__main__':
-	print(list_db())
+	print(search_db('shoe',1))

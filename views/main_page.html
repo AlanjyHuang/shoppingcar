@@ -1,75 +1,38 @@
-#add item to shopping car
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Guestbook: ListMsg</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+            tr:nth-child(even) {
+                background-color: #d6eeee;
+            }
+        </style>
     </head>
-    <script>
-        function loadMsg() {
-            let action = 'get'
-            let mydat = new FormData()
-            mydat.append('control', action)
-
-            url = 'http://192.168.56.1/shoppingcar/controllers/control.py'
-            fetch(url, {
-                method: 'POST',
-                body: mydat,
-            })
-                .then(function (res) {
-                    // return res.text()
-                    return res.json()
-                })
-                .then(function (data) {
-                    //example of returning results as text
-                    /**/
-                    //  console.log(data[1])
-                    //  JSON.parse(json.stringfy(data))
-                    console.log(data)
-                    /*let div=document.getElementById('guestbook');
-        		div.innerHTML=data;
-        */
-
-                    //example of returning results as a json object
-                    //    dat = data.dat //the dot format
-                    //     list = data['list'] //the [] indexed format
-                    //  console.log(dat, list)
-                    console.log('then ok')
-                    let p = ''
-                    for (item of data) {
-                        //console.log(item)
-                        p += '<p>'
-                        p += item.Name
-                        p += item.Price
-                        p += item.Number
-                        p += '</p>'
-                    }
-                    let div = document.getElementById('guestbook')
-                    div.innerHTML = p
-                })
-        }
+    <script src="functions.js">
+        window.onload = function () {
+            loadMsg('storage') }
     </script>
-    <body>
-        留言板 <a href="addMsgForm.html"> 新增留言 </a>
+    <body onload="loadMsg('storage')">
+        <h1>商場</h1>
         <hr />
-        <form method="post" action="delMsg.py">
-            輸入要刪除的號碼: <input type="text" id="i" name="i" /><input
-                type="button"
-                value="我kill"
-                onclick="killit('i')"
-            />
-        </form>
+        <table id="guestbook" style="width: 200px"></table>
+        <button onclick="loadMsg('storage');">REFRESH</button>
         <br />
-
-        輸入要按讚的號碼: <input type="text" id="j" name="j" /><input
-            type="button"
-            value="我愛"
-            onclick="likeit('j')"
-        />
-
+        <a href="shopping_car.html"> 查看我的購物車 </a>
         <hr />
-        <button onclick="loadMsg()">Load MSG</button>
-        <div class="myCSS" id="guestbook"></div>
+        <br />
+        <h4>購買</h4>
+        <form>
+            輸入商品名稱: <input type="text" id="i" name="j" /> <br />
+            輸入購買數量: <input type="text" id="j" name="i" />
+            <input type="button" value="加入購物車" onclick="add_to_car('i','j')" />
+        </form>
+        <div id="warning"></div>
     </body>
 </html>
-Footer © 2022 GitHub, Inc.

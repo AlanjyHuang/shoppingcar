@@ -12,27 +12,35 @@ import sys
 
 sys.path.insert(0,'..')
 from models import list_db
+from models import insert_db
 form = cgi.FieldStorage()
 #print("<p> control OK<\p>")
 #result=list_db()
 try:
         act=form.getvalue('control')
-        
+        #print(act)
 except:
         print("control argument missing")
         exit()
 
-
     #we can start accessing DB now
 if act=="get": #get one record by xid
    # print("getOK")
-    result=list_db.list_db()
+    db=form.getvalue('db')
+    result=list_db.list_db(db)
     #print(result)
     json_res=json.dumps(result,ensure_ascii=True)
     print(json_res)
-   # elif act=='like':
+
+elif act=="add":
+    #print('in add')
+    Num=form.getvalue('Num')
+    Name=form.getvalue('Name')
+
+   # print(Name,Num)
+    ret=list_db.search_db(Name,Num)
+    #print(ret)
+    insert_db.insert_db('shopping',ret)
+    #elif act=='del':
      #   mid=int(form.getvalue('id'))
-      #  likeit(mid)
-   # elif act=='del':
-    #    mid=int(form.getvalue('id'))
-     #   msgModel.kill(mid)
+      #  msgModel.kill(mid)
