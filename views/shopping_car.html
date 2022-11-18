@@ -2,16 +2,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Guestbook: ListMsg</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+            tr:nth-child(even) {
+                background-color: #d6eeee;
+            }
+        </style>
     </head>
     <script src="functions.js"></script>
     <body onload="loadMsg('shopping')">
+        <h1 id="total"></h1>
         <h1>My shopping car</h1>
         <hr />
         <table id="guestbook"></table>
         <button onclick="loadMsg('shopping')">刷新</button>
         <br />
-        留言板 <a href="main_page.html">繼續購物 </a>
+        <a href="main_page.html">繼續購物 </a>
         <hr />
         <br />
+        <a href="cashout_page.html">結帳</a>
     </body>
 </html>

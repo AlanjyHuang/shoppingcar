@@ -13,6 +13,7 @@ import sys
 sys.path.insert(0,'..')
 from models import list_db
 from models import insert_db
+from models import buy
 form = cgi.FieldStorage()
 #print("<p> control OK<\p>")
 #result=list_db()
@@ -44,3 +45,8 @@ elif act=="add":
     #elif act=='del':
      #   mid=int(form.getvalue('id'))
       #  msgModel.kill(mid)
+elif act=="cashout":
+    #print("incash")
+    ret=buy.cash_out()
+   # print("OK")
+    print(ret)

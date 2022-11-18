@@ -1,1 +1,31 @@
-# list shopping car # calculate total amout # call buy.py # clear items that are bought
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Guestbook: ListMsg</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+            tr:nth-child(even) {
+                background-color: #d6eeee;
+            }
+        </style>
+    </head>
+    <script src="functions.js"></script>
+    <body onload="loadMsg('shopping')">
+        <br />
+        <a href="shopping_car.html">回到購物車 </a>
+        <hr />
+        <h1>結帳</h1>
+        <h1 id="total"></h1>
+        <hr />
+        <table id="guestbook"></table>
+        <button onclick="loadMsg('shopping')">刷新</button>
+        <br />
+        <button onclick="out()">結帳</button>
+        <a href="main_page.html">回到商品頁 </a>
+        <hr />
+    </body>
+</html>
