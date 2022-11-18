@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Guestbook: ListMsg</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+            tr:nth-child(even) {
+                background-color: #d6e044;
+            }
+        </style>
+    </head>
+    <script src="functions.js">
+        window.onload = function () {
+            loadMsg_manager('storage') }
+    </script>
+    <body onload="loadMsg_manager('storage')">
+        <h1>貨倉</h1>
+        <hr />
+        <table id="guestbook" style="width: 200px"></table>
+        <button onclick="loadMsg_manager('storage');">REFRESH</button>
+        <br />
+        <h4>加入新貨物</h4>
+        <form>
+            輸入商品ID: <input type="text" id="x" name="j" /> <br />
+            輸入商品名稱: <input type="text" id="i" name="i" /> <br />
+            輸入商品價格: <input type="text" id="j" name="j" /> <br />
+            輸入商品數量: <input type="text" id="k" name="i" />
+            <input type="button" value="進貨" onclick="add_to_storage('x','i','j','k')" />
+            <input type="button" value="調整貨物數量" onclick="edit_storage('x','i','j','k')" />
+        </form>
+        <div id="warning"></div>
+    </body>
+</html>

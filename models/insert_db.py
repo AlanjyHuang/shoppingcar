@@ -42,9 +42,9 @@ def insert_db(dbchoose,ret):
     sql+=dbchoose
   #  print(sql)
     sql+=" (ID, Name, Price, Number) VALUES ('"
-    #print(ret['ID'])
+   # print(ret['ID'])
     sql+=str(ret['ID'])
-    
+
     sql+="','"
     sql+=ret['Name']
     sql+="','"
