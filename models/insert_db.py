@@ -32,5 +32,9 @@ def insert_db(dbchoose="storage"):
         conn.commit()
     else:
         pass
+
+
+
 if __name__=='__main__':
     insert_db()
+
