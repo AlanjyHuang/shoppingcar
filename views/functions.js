@@ -32,14 +32,21 @@ function loadMsg(db) {
             console.log('then ok')
             let p = '<tr><th>商品名稱</th><th>價格</th><th>數量</th></tr>'
             for (item of data) {
-                console.log(item.Name, item.Number)
+                console.log('then ok')
                 if (parseInt(item.Number) > 0) {
                     p += '<tr style="height:50px">'
                     p += '<td>'
                     p += item.Name
                     p += '</td>'
                     p += '<td>'
+                    console.log(item.Price)
+                    if (parseInt(item.Price) > 1000) {
+                        console.log(item.Price)
+                        p += "<p style = 'color:Tomato;'>"
+                    } else p += '<p>'
                     p += item.Price
+                    p += '</p>'
+                    console.log(p)
                     p += '</td>'
                     p += '<td>'
                     p += item.Number
